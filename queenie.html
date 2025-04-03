@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queenie's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff0f5; /* Light pink background */
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px; /* Increased from 800px */
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(219, 112, 147, 0.2); /* Pink shadow */
+            border: 1px solid #ffb6c1; /* Light pink border */
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #ffb6c1; /* Pink border */
+            margin-bottom: 20px;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            background-color: #ffb6c1; /* Light pink background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid #db7093; /* Medium pink border */
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .personal-info {
+            margin: 10px 0 20px;
+            line-height: 1.8;
+        }
+        
+        h1 {
+            margin-bottom: 5px;
+            color: #db7093; /* Medium pink for name */
+        }
+        
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .menu-item {
+            background-color: #ffe4e1; /* Very light pink */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .menu-item:hover {
+            background-color: #ffb6c1; /* Light pink on hover */
+        }
+        
+        .menu-item.active {
+            background-color: #db7093; /* Medium pink when active */
+            color: white;
+        }
+        
+        .section {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ffb6c1; /* Pink border */
+        }
+        
+        .section h2 {
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ffb6c1; /* Pink border */
+            color: #c71585; /* Deep pink for section headings */
+        }
+        
+        .education-item h3, .project h3 {
+            color: #db7093; /* Medium pink for headings */
+        }
+        
+        ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        li:before {
+            content: "♥ "; /* Pink heart bullet points */
+            color: #db7093;
+        }
+        
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        
+        .project {
+            width: calc(50% - 10px);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ffb6c1; /* Pink border */
+            position: relative;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 2px solid #ffb6c1;
+            background-color: #ffe4e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .project:last-child {
+            border-bottom: none;
+        }
+        
+        /* Added styles for ERD */
+        .erd-container {
+            width: 100%;
+            min-height: 600px; /* Minimum height for ERD diagram */
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .erd-title {
+            font-size: 18px;
+            color: #db7093;
+            margin-bottom: 15px;
+        }
+        
+        .erd-content {
+            width: 100%;
+            min-height: 550px; /* Ensure enough space for diagram */
+        }
+        
+        .full-width {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-pic">
+                    <img src="c:\Users\ユーザー\Downloads\queenie.png.jfif" alt="Queenie's Profile Picture">
+                </div>
+                <h1>Queenie</h1>
+                <div class="personal-info">
+                    <p>Queenie Jocel A. Nogales</p>
+                    <p>Calibuyo Tanza, Cavite</p>
+                    <p>Email: queenie@gmail.com</p>
+                    <p>August 18, 2002</p>
+                    
+                </div>
+            </div>
+        </header>
+        
+        <div class="menu">
+            <div id="btn-education" class="menu-item active" onclick="showSection('education')">Education</div>
+            <div id="btn-skills" class="menu-item" onclick="showSection('skills')">Skills</div>
+            <div id="btn-projects" class="menu-item" onclick="showSection('projects')">Projects</div>
+        </div>
+        
+        <section id="education" class="section" style="display: block;">
+            <h2>Educational Background</h2>
+            <div class="education-item">
+                <p>Elementary: Gregorio B Fojas</p>
+                <p>Junior and Senior Highschool: Amaya School of Home Industries</p>
+                <p>College: Cavite State University CCAT Campus</p>
+            </div>
+        </section>
+        
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <ul>
+                <li>Make Up: I'm good at make up products</li>
+                <li>Cooking: I love cooking</li>
+                <li>Communication: I do know how to communicate</li>
+                <li>Creative: I'm creative especially to my make up</li>
+                <li>Funny: I know this is also a skill and I'm proud of it</li>
+            </ul>
+        </section>
+        
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            
+            <div class="projects-container">
+                <div class="project">
+                    <h3>ERD</h3>
+                    <div class="project-image">
+                        <img src="c:\Users\ユーザー\Downloads\erdniqueenie.png.jpg" alt="erd">
+                    </div>
+                </div>
+                
+                <div class="project">
+                    <h3>C++ Activity</h3>
+                    <div class="project-image">
+                        <img src="c:\Users\ユーザー\Downloads\c++niqueenie.jpg" alt="c++">
+                    </div>
+                </div>
+                
+                <div class="project">
+                    <h3>Another C++ Activity</h3>
+                    <div class="project-image">
+                        <img src="c:\Users\ユーザー\Downloads\c++ulitniqueenie.jpg" alt="c++">
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Another c++</h3>
+                    <div class="project-image">
+                        <img src="c:\Users\ユーザー\Downloads\queeniec++ulit.jpg" alt="Data Dashboard">
+                    </div>
+                    <div class="project">
+                        <h3>Another c++</h3>
+                <div class="project-image">
+                        <img src="c:\Users\ユーザー\Downloads\c++ulitniqueeniemarie.jfif" alt="Data Dashboard">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            document.getElementById(id).style.display = 'block';
+            
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.getElementById('btn-' + id).classList.add('active');
+        }
+        showSection('education');
+    </script>
+</body>
+</html>
